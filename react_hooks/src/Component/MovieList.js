@@ -1,9 +1,9 @@
 import { MovieCard } from "./MovieCard";
-export const MovieList= ({list})=> {
+export const MovieList= ({movieList})=> {
     return(
         <div>
-            {list.map(
-                el=><MovieCard movie={el}/>
+            {movieList.map(
+                (el)=><MovieCard el={el} key={el.id}/>
             )}
         </div>
     )

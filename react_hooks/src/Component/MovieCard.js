@@ -1,10 +1,10 @@
-export const MovieCard=({movie:{title,description,posterURL,rating}})=> {
+export const MovieCard=({el})=> {
     return(
         <div>
-            <h1>{title}</h1>
-           <img src={posterURL}/>
-           <p>{description}</p>
-           <p>{rating}</p>
+            <h1>{el.title}</h1>
+           <img src={el.posterURL}/>
+           <p>{el.description}</p>
+           <p>{el.rating}</p>
         </div>
     )
 }
