@@ -1,11 +1,19 @@
 import "./App.css";
 import { MovieList } from "./Component/MovieList";
-import { AddMovie } from "./Component/AddMovie";
 import { Filter } from "./Component/Filter(title,rate)";
 import { useState } from "react";
+import { AddMovie } from "./Component/AddMovie";
 
 function App() {
+  const [rateFilter,setRatefilter]=useState(0)
+  const [titleFilter,setTitlefilter]=useState("")
 
+  const filterTitle=(titleFilter)=>{
+setTitlefilter(titleFilter)
+}
+const filterRate=(rateFilter)=>{
+  setRatefilter(rateFilter)
+}
   const [movieList, setMovieList] = useState([
     {
       title: "Aquaman",
@@ -27,17 +35,18 @@ function App() {
     },
   ]);
 const handleAdd=(newMovie)=>{
-  setMovieList([...movieList,newMovie])
+  setMovieList([...movieList,{...newMovie,id:Math.random()}])
 }
 
-const handleFilter = (newStatus)=>{
-  setMovieList([...movieList,newStatus]);
-}
+
   return (
     <div className="App">
-      <MovieList movieList={movieList} />
+      <Filter filterTitle = {filterTitle} filterRate={filterRate} rate={rateFilter}/>
+      <MovieList movieList={movieList.filter(
+        (el)=>el.title.toLocaleLowerCase().includes(titleFilter.trim().toLocaleLowerCase())&& (el.rating>=rateFilter)
+      )} />
+      
       <AddMovie handleAdd={handleAdd}/>
-      <Filter handleFilter={handleFilter} />
     </div>
   );
 }
