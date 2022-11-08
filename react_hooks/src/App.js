@@ -3,6 +3,7 @@ import { MovieList } from "./Component/MovieList";
 import { Filter } from "./Component/Filter(title,rate)";
 import { useState } from "react";
 import { AddMovie } from "./Component/AddMovie";
+import { MovieListHeading } from "./Component/MovieListHeading";
 
 function App() {
   const [rateFilter,setRatefilter]=useState(0)
@@ -41,7 +42,10 @@ const handleAdd=(newMovie)=>{
 
   return (
     <div className="App">
+      <div className="row d-flex align-items-center mt-4 mb-4">
+      <MovieListHeading heading='T-FLIX'/>
       <Filter filterTitle = {filterTitle} filterRate={filterRate} rate={rateFilter}/>
+      </div>
       <MovieList movieList={movieList.filter(
         (el)=>el.title.toLocaleLowerCase().includes(titleFilter.trim().toLocaleLowerCase())&& (el.rating>=rateFilter)
       )} />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import StarRatingComponent from "react-star-rating-controlled-component";
 
 export function Filter({ filterTitle,filterRate ,rate}) {
@@ -9,12 +9,13 @@ export function Filter({ filterTitle,filterRate ,rate}) {
     filterRate(value);
   };
   return (
-    <div>
+    <div className="col d-flex justify-content-end">
       <input
+      className="col form-control "
         placeholder="Search by title"
         onChange={(e) => filterTitle(e.target.value)}
       />
-      <button>Search</button>
+      <button className="col col-sm-2 btn btn-primary" type="submit">Search</button>
       
         <StarRatingComponent
           starHoverColor="yellow"

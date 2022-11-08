@@ -1,12 +1,15 @@
-import { AddMovie} from "./AddMovie";
-export const MovieCard=({el})=> {
-    return(
-        <div>
-            <h1>{el.title}</h1>
-           <img src={el.posterURL} width={'90px'}/>
-           <p>{el.description}</p>
-           <p>{el.rating}</p>
-        
+export const MovieCard = ({ el }) => {
+  return (
+    <div className="movie">
+      <img src={el.posterURL} width={"200px"} />
+      <div className="movie-info">
+        <h3>{el.title}</h3>
+        <span>{el.rating}</span>
+        <div className="movie-over">
+          <h2>Description</h2>
+          <p>{el.description}</p>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
